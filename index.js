@@ -5,7 +5,7 @@ const {
   logErros,
   errorHandler,
   boomErrorHandler,
-} = require('./middlewares/errorHandler');
+} = require('./middlewares/error.handler');
 
 const app = express();
 
