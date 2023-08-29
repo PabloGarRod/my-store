@@ -10,13 +10,14 @@ const {
 
 const app = express();
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
 const whiteList = [
   'http://localhost:5501',
   'http://127.0.0.1:5501',
+  'http://127.0.0.1:3000',
   'https://myapp.com',
 ];
 const options = {
@@ -28,17 +29,17 @@ const options = {
     }
   },
 };
-app.use(cors(options));
+app.use(cors());
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hola mi server express');
 });
 
-app.get('/nueva-ruta', (req, res) => {
+app.get('/api/nueva-ruta', (req, res) => {
   res.send('Hola soy nueva ruta');
 });
 
-app.get('/home', (req, res) => {
+app.get('/api/home', (req, res) => {
   res.send('BIENVENIDO A LA PÁGINA DE INICIO');
 });
 
